@@ -1,0 +1,21 @@
+# Node modules
+/node_modules/
+
+# Build output
+/dist/
+/build/
+
+/.env
+
+# Dependency directories
+/.parcel-cache/
+
+# Log files
+*.log
+
+# OS-specific files
+.DS_Store    # macOS
+Thumbs.db    # Windows
+
+# VS Code specific files
+.vscode/

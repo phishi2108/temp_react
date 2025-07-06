@@ -1,0 +1,73 @@
+const resObj = [
+  {
+    resImage: "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=800&q=60",
+    resName: "Meghna Foods",
+    cuisine: "Biryani, North Indian",
+    rating: "4.5",
+    deliveryTime: "30 mins",
+  },
+  {
+	resImage: "https://wallup.net/wp-content/uploads/2017/11/22/371886-food-pizza.jpg",
+	resName: "La Pino'z Pizza",
+    cuisine: "Pizza, Italian",
+    rating: "4.2",
+    deliveryTime: "28 mins",
+  },
+  {
+    resImage: "https://tse1.mm.bing.net/th/id/OIP.W7F-4MPblTWMagkFZ3VzWAHaGT?rs=1&pid=ImgDetMain",
+    resName: "KFC",
+    cuisine: "Fried Chicken, Fast Food",
+    rating: "4.0",
+    deliveryTime: "25 mins",
+  },
+  {
+    resImage: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=800&q=60",
+    resName: "Burger King",
+    cuisine: "Burgers, American",
+    rating: "4.1",
+    deliveryTime: "27 mins",
+  },
+  {
+    resImage: "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=60",
+    resName: "Rameshwaram Cafe",
+    cuisine: "South Indian",
+    rating: "4.7",
+    deliveryTime: "22 mins",
+  },
+  {
+    resImage: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=800&q=60",
+    resName: "McDonald's",
+    cuisine: "Burgers, Beverages",
+    rating: "4.0",
+    deliveryTime: "24 mins",
+  },
+  {
+    resImage: "https://product-assets.faasos.io/production/product/banner_image_es_1663087933578_Behrouz%20Biryani_2.jpg",
+    resName: "Behrouz Biryani",
+    cuisine: "Biryani, Mughlai",
+    rating: "4.3",
+    deliveryTime: "35 mins",
+  },
+  {
+    resImage: "https://digest.myhq.in/wp-content/uploads/2023/04/Blog-Featured-image-2.jpg",
+    resName: "WOW! Momo",
+    cuisine: "Tibetan, Fast Food",
+    rating: "4.1",
+    deliveryTime: "26 mins",
+  },
+  {
+    resImage: "https://indiancompanies.in/wp-content/uploads/2020/11/Haldiram-Franchise-Cost-Income-Investment-and-Return.jpg",
+    resName: "Haldiram's",
+    cuisine: "Indian, Street Food",
+    rating: "4.4",
+    deliveryTime: "23 mins",
+  },
+  {
+    resImage: "https://tse3.mm.bing.net/th/id/OIP.26a7bVS0Iwsq6-AC76neFgHaFj?rs=1&pid=ImgDetMain",
+    resName: "Domino's Pizza",
+    cuisine: "Pizza, Fast Food",
+    rating: "4.2",
+    deliveryTime: "29 mins",
+  },
+];
+export default resObj;

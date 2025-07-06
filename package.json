@@ -1,0 +1,30 @@
+{
+	"name": "ep_1",
+	"version": "1.0.0",
+	"scripts": {
+		"clean": "rimraf dist .parcel-cache",
+		"start": "npm run clean && parcel index.html",
+		"build": "parcel build index.html",
+		"test": "jest"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/phishi2108/temp_react.git"
+	},
+	"keywords": [],
+	"author": "Drumkarma",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/phishi2108/temp_react/issues"
+	},
+	"homepage": "https://github.com/phishi2108/temp_react#readme",
+	"description": "thak gya hu yrr kaam hi nhi krta",
+	"dependencies": {
+		"react": "^19.1.0",
+		"react-dom": "^19.1.0"
+	},
+	"devDependencies": {
+		"parcel": "^2.14.4",
+		"rimraf": "^6.0.1"
+	}
+}
