@@ -21,7 +21,8 @@
 	"description": "thak gya hu yrr kaam hi nhi krta",
 	"dependencies": {
 		"react": "^19.1.0",
-		"react-dom": "^19.1.0"
+		"react-dom": "^19.1.0",
+		"react-router-dom": "^7.6.2"
 	},
 	"devDependencies": {
 		"parcel": "^2.14.4",
