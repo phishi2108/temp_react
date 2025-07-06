@@ -1,6 +1,7 @@
 import RestaurantCard from "./resCard";
 import Shimer from "./Shimer";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 	const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -17,16 +18,18 @@ const Body = () => {
 		);
 		const json = await data.json();
 
-		const restaurantListCard = json?.data?.cards.find(
-			(card) => card?.card?.card?.gridElements?.infoWithStyle?.restaurants
-		);
+		const allRestaurants = [];
 
-		const restaurants =
-			restaurantListCard?.card?.card?.gridElements?.infoWithStyle
-				?.restaurants || [];
+		json?.data?.cards.forEach((card) => {
+			const restaurants =
+				card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+			if (restaurants) {
+				allRestaurants.push(...restaurants);
+			}
+		});
 
-		setListOfRestaurants(restaurants);
-		setOriginalList(restaurants);
+		setListOfRestaurants(allRestaurants);
+		setOriginalList(allRestaurants);
 	};
 
 	if (listOfRestaurants.length === 0) {
@@ -71,8 +74,13 @@ const Body = () => {
 			</div>
 
 			<div className="res-container">
-				{listOfRestaurants.map((restaurant) => (
-					<RestaurantCard key={restaurant.info.id} restaurant={restaurant} />
+				{listOfRestaurants.map((restaurant, index) => (
+					<Link
+						key={restaurant.info.id + "_" + index}
+						to={"/restaurants/" + restaurant.info.id}
+					>
+						<RestaurantCard restaurant={restaurant} />
+					</Link>
 				))}
 			</div>
 		</div>
