@@ -2,6 +2,7 @@ import RestaurantCard from "./resCard";
 import Shimer from "./Shimer";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../util/useonlineStatus";
 
 const Body = () => {
 	const [listOfRestaurants, setListOfRestaurants] = useState([]);
@@ -32,6 +33,15 @@ const Body = () => {
 		setOriginalList(allRestaurants);
 	};
 
+	const onlineStatus = useOnlineStatus();
+
+	if (!onlineStatus)
+		return (
+			<h1>
+				Looks like you are OFFLINE, please check your Internet Connection!!
+			</h1>
+		);
+		
 	if (listOfRestaurants.length === 0) {
 		return <Shimer />;
 	}

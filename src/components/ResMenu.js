@@ -1,24 +1,12 @@
-import { useEffect, useState } from "react";
 import Shimer from "./Shimer";
 import { useParams } from "react-router-dom";
-
+import useRestaurantMenu from "../util/useRestaurantMenu";
 const ResMenu = () => {
-	const [resInfo, setResInfo] = useState(null);
+	
 
 	const { resId } = useParams();
+	const resInfo = useRestaurantMenu(resId);
 
-	useEffect(() => {
-		fetchMenu();
-	}, []);
-
-	const fetchMenu = async () => {
-		const data = await fetch(
-			"https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=23.19088557012942&lng=79.90561876482693&restaurantId="+resId+"&catalog_qa=undefined&submitAction=ENTER"
-		);
-		const json = await data.json();
-
-		setResInfo(json.data);
-	};
 
 	if (!resInfo) return <Shimer />;
 
