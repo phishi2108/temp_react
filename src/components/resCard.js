@@ -2,16 +2,26 @@ const RestaurantCard = ({ restaurant }) => {
 	const { name, cuisines, cloudinaryImageId, avgRating, sla } = restaurant.info;
 
 	return (
-		<div className="res-card">
+		<div className="w-full h-[320px] bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-lg hover:scale-[1.015] transition-all duration-300 flex flex-col">
 			<img
-				className="res-logo"
+				className="h-40 w-full object-cover"
 				alt="res-logo"
 				src={`https://media-assets.swiggy.com/swiggy/image/upload/${cloudinaryImageId}`}
 			/>
-			<h3>{name}</h3>
-			<h4>{cuisines.join(", ")}</h4>
-			<h4>⭐ {avgRating}</h4>
-			<h4>⏱️ {sla.deliveryTime} mins</h4>
+			
+			<div className="p-4 flex flex-col justify-between flex-grow">
+				<h3 className="text-lg font-semibold text-gray-900 leading-5 line-clamp-1">
+					{name}
+				</h3>
+				<h4 className="text-sm text-gray-500 mt-1 line-clamp-2">
+					{cuisines.join(", ")}
+				</h4>
+
+				<div className="flex items-center justify-between mt-4 text-sm font-medium text-gray-600">
+					<span>⭐ {avgRating}</span>
+					<span>⏱️ {sla.deliveryTime} mins</span>
+				</div>
+			</div>
 		</div>
 	);
 };
