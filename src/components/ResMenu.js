@@ -21,28 +21,28 @@ const ResMenu = () => {
 			?.itemCards || [];
 
 	return (
-		<section className="min-h-screen bg-gray-50 py-10 px-4 sm:px-8 md:px-16">
-			<div className="max-w-5xl mx-auto bg-white p-6 sm:p-10 rounded-xl shadow-xl">
+		<section className="min-h-screen bg-gray-50 dark:bg-gray-900 py-10 px-4 sm:px-8 md:px-16 transition-colors duration-300">
+			<div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 p-6 sm:p-10 rounded-xl shadow-xl">
 				{/* Header */}
-				<div className="mb-10 border-b pb-4">
-					<h1 className="text-3xl font-bold text-gray-900 mb-2">{name}</h1>
-					<p className="text-gray-600 text-sm">{cuisines}</p>
-					<p className="text-gray-700 text-sm mt-1">{costForTwo}</p>
+				<div className="mb-10 border-b border-gray-300 dark:border-gray-600 pb-4">
+					<h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{name}</h1>
+					<p className="text-gray-600 dark:text-gray-300 text-sm">{cuisines}</p>
+					<p className="text-gray-700 dark:text-gray-400 text-sm mt-1">{costForTwo}</p>
 				</div>
 
 				{/* Menu */}
-				<h2 className="text-2xl font-semibold text-gray-800 mb-6">🍽️ Menu</h2>
+				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">🍽️ Menu</h2>
 				<ul className="space-y-6">
 					{itemCards.map((item, index) => {
 						const dish = item.card.info;
 						return (
 							<li
 								key={dish.id || index}
-								className="p-4 bg-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row justify-between gap-4"
+								className="p-4 bg-gray-100 dark:bg-gray-700 rounded-xl shadow-sm hover:shadow-md transition-all flex flex-col sm:flex-row justify-between gap-4"
 							>
 								{/* Left Side */}
 								<div className="flex-1">
-									<h3 className="text-lg font-semibold text-gray-900">
+									<h3 className="text-lg font-semibold text-gray-900 dark:text-white">
 										{dish.name}
 									</h3>
 
@@ -57,13 +57,13 @@ const ResMenu = () => {
 
 									{/* Description */}
 									{dish.description && (
-										<p className="text-sm text-gray-500 mt-2 line-clamp-3">
+										<p className="text-sm text-gray-500 dark:text-gray-300 mt-2 line-clamp-3">
 											{dish.description}
 										</p>
 									)}
 
 									{/* Price */}
-									<p className="text-gray-800 font-medium mt-2">
+									<p className="text-gray-800 dark:text-gray-100 font-medium mt-2">
 										₹
 										{(dish.price ?? dish.defaultPrice ?? 0) / 100}
 									</p>
@@ -78,7 +78,7 @@ const ResMenu = () => {
 											className="w-24 h-24 rounded-lg object-cover"
 										/>
 									)}
-									<button className="text-sm px-4 py-1 bg-neutral-800 text-white rounded-md hover:bg-neutral-700 transition">
+									<button className="text-sm px-4 py-1 bg-neutral-800 dark:bg-neutral-600 text-white rounded-md hover:bg-neutral-700 dark:hover:bg-neutral-500 transition">
 										Add
 									</button>
 								</div>
