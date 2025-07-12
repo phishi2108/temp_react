@@ -1,12 +1,16 @@
 import { LOGO_URL } from "../util/constants";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import DarkModeToggle from "./DarkModeToggle";
+import userContext from "../util/userContext";
 
 const Header = () => {
 	const [btnNameReact, setBtnNameReact] = useState("Log In");
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+	const { loggedInUser } = useContext(userContext);
+	console.log(loggedInUser);
 
 	return (
 		<header className="backdrop-blur-lg bg-white/60 dark:bg-gray-900/60 shadow-lg sticky top-0 z-50 border-b border-gray-200 dark:border-gray-700">
@@ -55,6 +59,7 @@ const Header = () => {
 						<li>
 							<DarkModeToggle />
 						</li>
+						
 					</ul>
 				</nav>
 

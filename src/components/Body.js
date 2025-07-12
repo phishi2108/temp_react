@@ -15,9 +15,11 @@ const Body = () => {
 	}, []);
 
 	const fetchData = async () => {
+	try {
 		const data = await fetch(
 			"https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.19088557012942&lng=79.90561876482693&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
 		);
+
 		const json = await data.json();
 
 		const allRestaurants = [];
@@ -32,7 +34,11 @@ const Body = () => {
 
 		setListOfRestaurants(allRestaurants);
 		setOriginalList(allRestaurants);
-	};
+	} catch (err) {
+		console.error("Fetch error:", err);
+	}
+};
+	
 
 	const onlineStatus = useOnlineStatus();
 
