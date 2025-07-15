@@ -15,39 +15,37 @@ const Body = () => {
 	}, []);
 
 	const fetchData = async () => {
-	try {
-		const data = await fetch(
-			"https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.19088557012942&lng=79.90561876482693&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
-		);
+		try {
+			const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.19088557012942&lng=79.90561876482693&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
 
-		const json = await data.json();
+			const json = await data.json();
 
-		const allRestaurants = [];
+			const allRestaurants = [];
 
-		json?.data?.cards.forEach((card) => {
-			const restaurants =
-				card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-			if (restaurants) {
-				allRestaurants.push(...restaurants);
-			}
-		});
+			json?.data?.cards.forEach((card) => {
+				const restaurants =
+					card?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+				if (restaurants) {
+					allRestaurants.push(...restaurants);
+				}
+			});
 
-		setListOfRestaurants(allRestaurants);
-		setOriginalList(allRestaurants);
-	} catch (err) {
-		console.error("Fetch error:", err);
-	}
-};
-	
+			setListOfRestaurants(allRestaurants);
+			setOriginalList(allRestaurants);
+		} catch (err) {
+			console.error("Fetch error:", err);
+		}
+	};
 
 	const onlineStatus = useOnlineStatus();
 
-	if (!onlineStatus)
+	if (!onlineStatus) {
 		return (
 			<h1 className="text-center text-xl text-red-600 dark:text-red-400 font-semibold mt-20">
 				🚫 You're offline. Please check your internet connection.
 			</h1>
 		);
+	}
 
 	if (listOfRestaurants.length === 0) {
 		return <Shimer />;
