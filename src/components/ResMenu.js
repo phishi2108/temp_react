@@ -1,12 +1,14 @@
 import Shimer from "./Shimer";
 import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../util/useRestaurantMenu";
+import { useDispatch } from "react-redux";
+import { addItem } from "../util/cartSlice";
 
 const ResMenu = () => {
 	const { resId } = useParams();
 	const resInfo = useRestaurantMenu(resId);
 
-	if (!resInfo) return <Shimer />;
+	
 
 	const resDetails = resInfo?.cards[2]?.card?.card?.info;
 	const name = resDetails?.name;
@@ -20,18 +22,31 @@ const ResMenu = () => {
 		regularCards.find((card) => card.card?.card?.itemCards)?.card?.card
 			?.itemCards || [];
 
+	const dispatch = useDispatch();
+
+	const handleAddItem = (item) => {
+		dispatch(addItem(item));
+	};
+	if (!resInfo) return <Shimer />;
+
 	return (
 		<section className="min-h-screen bg-gray-50 dark:bg-gray-900 py-10 px-4 sm:px-8 md:px-16 transition-colors duration-300">
 			<div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 p-6 sm:p-10 rounded-xl shadow-xl">
 				{/* Header */}
 				<div className="mb-10 border-b border-gray-300 dark:border-gray-600 pb-4">
-					<h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">{name}</h1>
+					<h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-2">
+						{name}
+					</h1>
 					<p className="text-gray-600 dark:text-gray-300 text-sm">{cuisines}</p>
-					<p className="text-gray-700 dark:text-gray-400 text-sm mt-1">{costForTwo}</p>
+					<p className="text-gray-700 dark:text-gray-400 text-sm mt-1">
+						{costForTwo}
+					</p>
 				</div>
 
 				{/* Menu */}
-				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">🍽️ Menu</h2>
+				<h2 className="text-2xl font-semibold text-gray-800 dark:text-gray-200 mb-6">
+					🍽️ Menu
+				</h2>
 				<ul className="space-y-6">
 					{itemCards.map((item, index) => {
 						const dish = item.card.info;
@@ -64,8 +79,7 @@ const ResMenu = () => {
 
 									{/* Price */}
 									<p className="text-gray-800 dark:text-gray-100 font-medium mt-2">
-										₹
-										{(dish.price ?? dish.defaultPrice ?? 0) / 100}
+										₹{(dish.price ?? dish.defaultPrice ?? 0) / 100}
 									</p>
 								</div>
 
@@ -78,7 +92,10 @@ const ResMenu = () => {
 											className="w-24 h-24 rounded-lg object-cover"
 										/>
 									)}
-									<button className="text-sm px-4 py-1 bg-neutral-800 dark:bg-neutral-600 text-white rounded-md hover:bg-neutral-700 dark:hover:bg-neutral-500 transition">
+									<button
+										className="text-sm px-4 py-1 bg-neutral-800 dark:bg-neutral-600 text-white rounded-md hover:bg-neutral-700 dark:hover:bg-neutral-500 transition"
+										onClick={() => handleAddItem(item)}
+									>
 										Add
 									</button>
 								</div>

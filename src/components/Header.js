@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import DarkModeToggle from "./DarkModeToggle";
 import userContext from "../util/userContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
 	const [btnNameReact, setBtnNameReact] = useState("Log In");
@@ -12,6 +13,9 @@ const Header = () => {
 	const { loggedInUser } = useContext(userContext);
 	console.log(loggedInUser);
 
+	
+	const cartItems = useSelector((store) => store.cart.items);//subcribing to a store using selector
+	console.log(cartItems);
 	return (
 		<header className="backdrop-blur-lg bg-white/60 dark:bg-gray-900/60 shadow-lg sticky top-0 z-50 border-b border-gray-200 dark:border-gray-700">
 			<div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -42,7 +46,7 @@ const Header = () => {
 							<Link to="/contact">Contact Us</Link>
 						</li>
 						<li className="hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200 cursor-pointer">
-							Cart 🛒
+							<Link to="/cart">Cart 🛒({cartItems.length})</Link>
 						</li>
 						<li>
 							<button
@@ -59,7 +63,6 @@ const Header = () => {
 						<li>
 							<DarkModeToggle />
 						</li>
-						
 					</ul>
 				</nav>
 

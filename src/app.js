@@ -7,12 +7,17 @@ import Error from "./components/Error";
 import ResMenu from "./components/ResMenu";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import { ThemeProvider } from "./components/ThemeContext";
+import { Provider } from "react-redux";
+import webStore from "./util/webStore";
+import Cart from "./components/Cart";
 const AppLayout = () => {
 	return (
-		<div className="app min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
-			<Header />
-			<Outlet />
-		</div>
+		<Provider store={webStore}>
+			<div className="app min-h-screen bg-white text-black dark:bg-gray-900 dark:text-white transition-colors duration-300">
+				<Header />
+				<Outlet />
+			</div>
+		</Provider>
 	);
 };
 
@@ -37,6 +42,11 @@ const appRouter = createBrowserRouter([
 				path: "/restaurants/:resId",
 				element: <ResMenu />,
 			},
+			{
+				path: "/cart",
+				element: <Cart />,
+			},
+
 		],
 		errorElement: <Error />,
 	},
